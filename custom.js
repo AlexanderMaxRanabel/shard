@@ -27,5 +27,16 @@ rl.question('Enter a string to hash: ', (data) => {
     const rstring = generateRandomString(randomInt);
 
     const target_hash = crypto.createHash('sha256').update(rstring).digest('hex');
+
+    if (target_hash === data_hash3) {
+      console.log("Block hashes match. cannot generate block");
+    } else {
+      const blockID = generateRandomString(12);
+      const blockID_hash = crypto.createHash('sha256').update(blockID).digest('hex');
+
+      console.log("Block ID: " + blockID_hash);
+      console.log("Data: " + data_hash3);
+      console.log("Target: " + target_hash);
+    }
     rl.close();
 });
